@@ -1,17 +1,18 @@
 import './App.css'
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { Login } from "./pages/login"
 import { ItemForm } from "./components/ItemForm"
 import { CadastroUsuario } from "./pages/cadastro-usuario"
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/avanti-bootcamp">
       <Routes>
         <Route path="/login" element={<Login/>}/>
         <Route path="/cadastrar-usuario" element={<CadastroUsuario/>}/>
         <Route path="/cadastrar-item" element={<ItemForm isEdit={false}/>}/>
         <Route path="/atualizar-item/:itemId" element={<ItemForm isEdit={true}/>}/>
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   )
